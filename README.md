@@ -2,7 +2,8 @@
 
 Helps a real-estate salesperson see which inbound leads to call first, what each customer actually wants, and how to reply, on WhatsApp and in the customer's own language.
 
-**Live app:** https://masal-ai-pi.vercel.app · **Demo video:** _add link_
+**Live app:** https://masal-ai-pi.vercel.app · **Demo video:** drive: https://drive.google.com/file/d/1xhcnWWola2WN5aeBTNpdFz8zh4Dhexmf/view?usp=drivesdk
+ ·  **Youtube** : https://www.youtube.com/watch?v=jE3u9WU7S1U
 
 ![Lead page](docs/lead.png)
 ![All Lead page](docs/all-leads.png)
