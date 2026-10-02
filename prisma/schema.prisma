@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Tier {
+  HOT
+  WARM
+  COLD
+}
+
+model Lead {
+  id          String        @id @default(cuid())
+  name        String
+  phone       String?
+  location    String
+  requirement String
+  budget      String
+  timeline    String
+  message     String
+  /// Validated LeadAnalysis (see src/lib/schemas.ts). Stored whole because it is
+  /// only ever read back as a unit; score and tier are lifted out for sorting.
+  analysis    Json
+  score       Int
+  tier        Tier
+  createdAt   DateTime      @default(now())
+  messages    ChatMessage[]
+
+  @@index([score])
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  /// "user" (the salesperson) or "assistant"
+  role      String
+  content   String
+  createdAt DateTime
+
+  @@index([leadId, createdAt])
+}
